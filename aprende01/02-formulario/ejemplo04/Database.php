@@ -12,7 +12,7 @@
                 self::$bd -> exec(
                     'CREATE TABLE IF NOT EXISTS curriculos '.
                     '(id INTEGER PRIMARY KEY AUTOINCREMENT, nombre VARCHAR(20), '.
-                    'apellidos VARCHAR(40), email STRING UNIQUE, fecha_nacimeinto DATE, '.
+                    'apellido1 VARCHAR(20), apellido2 VARCHAR(20), email STRING UNIQUE, fecha_nacimiento DATE, '.
                     'sexo CHAR(1), aficiones VARCHAR(255), estudios VARCHAR(255), '.
                     'observaciones TEXT, imagen STRING)'
                 );

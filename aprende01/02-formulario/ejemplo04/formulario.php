@@ -29,6 +29,7 @@
         echo "Nombre de la Imagen: " . $imagen . "<br>";
         echo "<hr>";
         echo "</pre>";*/
+
     $nombre = $_POST['nombre'] ?? '';
     $apellido1 = $_POST['apellido1'] ?? '';
     $apellido2 = $_POST['apellido2'] ?? '';
@@ -55,7 +56,21 @@
 
     if ($nombre != '')
     {
+        $Data = [
+            'nombre' => $nombre,
+            'apellido1' => $apellido1,
+            'apellido2' => $apellido2,
+            'email' => $email,
+            'fechanacimiento' => $fechanacimiento,
+            'sexo' => $sexo,
+            'aficiones' => $aficiones,
+            'nivel' => $estudios,
+            'observaciones' => $observaciones,
+            'imagen' => $imagen['name']
+        ];
+
         $curriculoDao = new CurriculoDao();
+        $curriculoDao->save($Data);
     }
 
     if ($nombre != '')

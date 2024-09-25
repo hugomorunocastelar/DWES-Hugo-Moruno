@@ -38,7 +38,7 @@
                            value="<?= $email ?>" <?= $readonly ?>>
                 </div>
                 <div>
-                    <label for="fechanacimiento">Primer Apellido: </label>
+                    <label for="fechanacimiento">Fecha de Nacimiento: </label>
                     <input id="fechanacimiento" type="date" name="fechanacimiento"
                            value="<?= $fechanacimiento ?>" <?= $readonly ?>>
                 </div>

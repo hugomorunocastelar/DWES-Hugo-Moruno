@@ -15,19 +15,21 @@ class CurriculoDao
     {
         $sentencia = $this->bd->prepare(
             'INSERT INTO curriculos(
-                            nombre, apellidos, email, fecha_nacimiento, sexo, aficiones,
+                            nombre, apellido1, apellido2, email, fecha_nacimiento, sexo, aficiones,
                             estudios, observaciones, imagen)
-                       VALUES (:nombre, :apellidos, :email, :fecha_nacimiento, :sexo,
+                       VALUES (:nombre, :apellido1 , :apellido2, :email, :fecha_nacimiento, :sexo,
                             :aficiones, :estudios, :observaciones, :imagen)');
-        $sentencia->bindValue(':nombre', $data['nombre'] ?? null, type: SQLITE3_TEXT);
-        $sentencia->bindValue(':apellidos', $data['apellidos'] ?? null, type: SQLITE3_TEXT);
-        $sentencia->bindValue(':email', $data['email'] ?? null, type: SQLITE3_TEXT);
-        $sentencia->bindValue(':fecha_nacimiento', $data['fecha_nacimiento'] ?? null, type: SQLITE3_TEXT);
-        $sentencia->bindValue(':sexo', $data['sexo'] ?? null, type: SQLITE3_TEXT);
-        $sentencia->bindValue(':aficiones', $data['aficiones'] ?? null, type: SQLITE3_TEXT);
-        $sentencia->bindValue(':estudios', $data['estudios'] ?? null, type: SQLITE3_TEXT);
-        $sentencia->bindValue(':observaciones', $data['observaciones'] ?? null, type: SQLITE3_TEXT);
-        $sentencia->bindValue(':imagen', $data['imagen'] ?? null, type: SQLITE3_TEXT);
+        $sentencia->bindValue(':nombre', $data['nombre'] ?? "", type: SQLITE3_TEXT);
+        $sentencia->bindValue(':apellido1', $data['apellido1'] ?? '', type: SQLITE3_TEXT);
+        $sentencia->bindValue(':apellido2', $data['apellido2'] ?? '', type: SQLITE3_TEXT);
+        $sentencia->bindValue(':email', $data['email'] ?? '', type: SQLITE3_TEXT);
+        $sentencia->bindValue(':fecha_nacimiento', $data['fecha_nacimiento'] ?? '', type: SQLITE3_TEXT);
+        $sentencia->bindValue(':sexo', $data['sexo'] ?? '', type: SQLITE3_TEXT);
+        $sentencia->bindValue(':aficiones', $data['aficiones'] ?? '', type: SQLITE3_TEXT);
+        $sentencia->bindValue(':estudios', $data['estudios'] ?? '', type: SQLITE3_TEXT);
+        $sentencia->bindValue(':observaciones', $data['observaciones'] ?? '', type: SQLITE3_TEXT);
+        $sentencia->bindValue(':imagen', $data['imagen'] ?? '', type: SQLITE3_TEXT);
+        $sentencia->execute();
     }
 
     public function findAll()
