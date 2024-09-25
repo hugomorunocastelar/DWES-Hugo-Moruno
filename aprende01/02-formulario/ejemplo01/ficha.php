@@ -15,8 +15,8 @@
     $email = $_POST['email'];
     $fechanacimiento = $_POST['fechanacimiento'];
     $sexo = $_POST['sexo'] ?? '';
-//    $aficiones = $_POST['aficiones'];
-//    $aficiones = isset($_POST['aficiones']) ? $_POST['aficiones'] : [];
+    //    $aficiones = $_POST['aficiones'];
+    //    $aficiones = isset($_POST['aficiones']) ? $_POST['aficiones'] : [];
     $aficiones = isset($_POST['aficiones']) ?? [];
     $estudios = $_POST['nivel'];
     $observaciones = $_POST['observaciones'];
@@ -30,7 +30,7 @@
     echo "Email: " . $email . "<br>";
     echo "Fecha de Nacimiento: " . $fechanacimiento . "<br>";
     echo "Sexo: " . $sexo . "<br>";
-//    echo "Aficiones: " . implode(", ", $aficiones) . "<br>";
+    //    echo "Aficiones: " . implode(", ", $aficiones) . "<br>";
     echo "Aficiones: ";
     foreach ($aficiones as $aficion) {
         echo $aficion . "<br>";
