@@ -3,5 +3,8 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/aprende01" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/aprende02/app2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/aprende03/proyectoLaravel" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/aprende03/pruebaSail" vcs="Git" />
   </component>
 </project>
