@@ -53,4 +53,10 @@ class CurriculoDao implements Dao
         $sentencia->execute();
         return $sentencia->fetch(PDO::FETCH_ASSOC);
     }
+
+    public function delete(int $id): bool
+    {
+        // TODO: Implement delete() method.
+        return true;
+    }
 }
