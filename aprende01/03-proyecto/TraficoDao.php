@@ -20,7 +20,7 @@
             $sentencia->bindValue(':matricula', $data['matricula'] ?? "", type: SQLITE3_TEXT);
             $sentencia->bindValue(':modelo', $data['modelo'] ?? "", type: SQLITE3_TEXT);
             $sentencia->bindValue(':fecha_inscrip', $data['fecha_inscrip'] ?? "", type: SQLITE3_TEXT);
-            $sentencia->bindValue(':imagen', $data['imagen']['name'] ?? "", type: SQLITE3_TEXT);
+            $sentencia->bindValue(':imagen', $data['imagen'], type: SQLITE3_TEXT);
             return $sentencia->execute() ? 1 : 0;
         }
 

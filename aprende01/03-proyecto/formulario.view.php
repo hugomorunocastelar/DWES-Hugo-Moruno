@@ -15,23 +15,21 @@
         <div class="container-form">
             <div class="items-form">
                 <label for="matricula">Matrícula</label>
-                <input id="matricula" type="text" name="data[matricula]" value="<?= $data['matricula'] ?? '' ?> " placeholder="Matrícula" <?= $data['readonly'] ?? '' ?>>
+                <input id="matricula" type="text" name="matricula" value="<?= $data['matricula'] ?? '' ?> " placeholder="Matrícula" <?= $data['readonly'] ?? '' ?>>
             </div>
             <div class="items-form">
                 <label for="modelo">Modelo:</label>
-                <input id="modelo" type="text" name="data[modelo]" value="<?= $data['modelo'] ?? '' ?>" placeholder="Modelo" <?= $data['readonly'] ?? '' ?>>
+                <input id="modelo" type="text" name="modelo" value="<?= $data['modelo'] ?? '' ?>" placeholder="Modelo" <?= $data['readonly'] ?? '' ?>>
             </div>
             <div class="items-form">
                 <label for="fechaInscrip">Fecha de inscripción:</label>
-                <input id="fechaInscrip" type="date" name="data[fecha_inscrip]" value="<?= $data['fecha_inscrip'] ?? '' ?>" <?= $data['readonly'] ?? '' ?>>
+                <input id="fechaInscrip" type="date" name="fecha_inscrip" value="<?= $data['fecha_inscrip'] ?? '' ?>" <?= $data['readonly'] ?? '' ?>>
             </div>
             <div class="items-form">
-                <label for="nombre">Imagen:</label>
-                <?php if (!isset($data['readonly'])) { ?>
-                    <input type="file" id="imagen" name="data[imagen]" >
-                <?php } ?>
-                <?php if ($data['imagen'] ?? null != null) { ?>
-                    <img src="<?=$data['imagen']?>">
+                <label for="imagen">Imagen: </label>
+                <input id="imagen" type="file" name="imagen">
+                <?php if (isset($data['localPathImagen'])) { ?>
+                    <img src="<?=$data['localPathImagen']?>">
                 <?php } ?>
             </div>
             <div>

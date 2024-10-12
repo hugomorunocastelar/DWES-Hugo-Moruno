@@ -32,11 +32,19 @@
 
         public function crear() {
             $data = $this->initForm();
+            if (isset($_FILES['imagen'])) {
+                $imagen = $_FILES['imagen'] ?? '';
+                $localPathImagen = $imagen['name'];
+            } else {
+                $localPathImagen = null;
+            }
             require "formulario.view.php";
         }
 
         public function store() {
-            $data = $_POST['data'];
+            $data = $_POST;
+            $data['imagen'] = $_FILES['imagen']['name'];
+            move_uploaded_file($_FILES['imagen']['name'], "./img/" . $data['imagen']);
 
             $this->traficoDao->save($data);
 
@@ -48,6 +56,11 @@
 
             $data = $this->traficoDao->findById($id);
             $data = $data[0];
+            if ($data['imagen']!=null) {
+                $data['localPathImagen'] = $data['imagen'];
+            } else {
+                $data['localPathImagen'] = null;
+            }
             $data['readonly'] = 'readonly';
             require "formulario.view.php";
         }
@@ -72,7 +85,6 @@
         $data['modelo'] = '';
         $data['fecha_inscrip'] = '';
         $data['imagen'] = null;
-        $data['localPathImagen'] = null;
         return $data;
     }
     }

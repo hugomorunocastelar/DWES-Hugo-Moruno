@@ -36,7 +36,6 @@ class CurriculoController
 
         if (isset($_FILES['imagen'])) {
             $imagen = $_FILES['imagen'] ?? '';
-//    $localPathImagen = '/' . $imagen['name'];
             $localPathImagen = $imagen['name'];
         } else {
             $localPathImagen = null;
