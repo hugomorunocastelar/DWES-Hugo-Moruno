@@ -13,26 +13,48 @@
 
         public function save($data): int|null
         {
-            // TODO: Implement save() method.
+            $sentencia = $this->bd->prepare(
+                'INSERT INTO trafico(
+                            matricula, modelo, fecha_inscrip, imagen)
+                       VALUES (:matricula, :modelo, :fecha_inscrip, :imagen)');
+            $sentencia->bindValue(':matricula', $data['matricula'] ?? "", type: SQLITE3_TEXT);
+            $sentencia->bindValue(':modelo', $data['modelo'] ?? "", type: SQLITE3_TEXT);
+            $sentencia->bindValue(':fecha_inscrip', $data['fecha_inscrip'] ?? "", type: SQLITE3_TEXT);
+            $sentencia->bindValue(':imagen', $data['imagen']['name'] ?? "", type: SQLITE3_TEXT);
+            return $sentencia->execute() ? 1 : 0;
         }
 
-        public function findById(int $id): array|null
+        public function findById(int $id): array
         {
-            // TODO: Implement findById() method.
+            $result = $this->bd->query("SELECT * FROM trafico WHERE id =".$id);
+            $data = [];
+            while ($trafico = $result->fetchArray(SQLITE3_ASSOC)) {
+                $data[] = $trafico;
+            }
+            return $data;
         }
 
         public function update(int $id, array $data): bool
         {
             // TODO: Implement update() method.
+            return true;
         }
 
         public function findAll(): array|null
         {
-            // TODO: Implement findAll() method.
+            $sentencia = $this->bd->prepare("SELECT * FROM trafico");
+            $results = $sentencia->execute();
+            $list = [];
+            while ($trafico = $results->fetchArray(SQLITE3_ASSOC)) {
+                $list[] = $trafico;
+            }
+            return $list;
         }
 
         public function delete(int $id): bool
         {
-            // TODO: Implement delete() method.
+            $sentencia = $this->bd->prepare("DELETE FROM trafico WHERE id =".$id);
+            $result = $sentencia->execute();
+            return ($result && $this->bd->changes() > 0);
         }
     }

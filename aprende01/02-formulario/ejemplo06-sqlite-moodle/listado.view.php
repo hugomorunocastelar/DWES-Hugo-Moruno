@@ -9,34 +9,32 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-
-<a href="?option=create"  style="background-color: #bd2020; padding: 10px; border-radius: 5px; color: #ffffff">Nuevo</a>
-<br><br>
-<table style="width: 100%">
-    <thead>
-    <th style="font-weight: bold">Nombre</th>
-    <th style="font-weight: bold">Apellidos</th>
-    <th style="font-weight: bold">Fecha nac.</th>
-    <th></th>
-    </thead>
-    <tbody>
-    <?php foreach ($data['curriculos'] as $curriculo) { ?>
-            <tr>
-                <td> <?= $curriculo['nombre'] ?></td>
-                <td> <?= $curriculo['apellidos'] ?></td>
-                <td>
-                    <?= $curriculo['fecha_nacimiento']?date('d/m/Y',strtotime($curriculo['fecha_nacimiento'])):'' ?>
-                </td>
-                <td>
-                    <a href="?option=show&id=<?=$curriculo['id']?>">ver</a> &nbsp;
-                    <a href="?option=edit&id=<?=$curriculo['id']?>">editar</a> &nbsp;
-                    <a href="?option=delete&id=<?=$curriculo['id']?>">borrar</a> &nbsp;
-                </td>
-            </tr>
-    <?php } ?>
-    </tbody>
-</table>
-
-
+    <main>
+        <a href="?option=create">Nuevo</a>
+        <table>
+            <thead>
+                <th>Matrícula</th>
+                <th>Modelo</th>
+                <th>Fecha inscrip.</th>
+                <th>Acciones</th>
+            </thead>
+            <tbody>
+            <?php foreach ($data['trafico'] as $trafico) { ?>
+                    <tr>
+                        <td> <?= $trafico['nombre'] ?></td>
+                        <td> <?= $trafico['apellidos'] ?></td>
+                        <td>
+                            <?= $trafico['fecha_nacimiento']?date('d/m/Y',strtotime($trafico['fecha_nacimiento'])):'' ?>
+                        </td>
+                        <td>
+                            <a href="?option=show&id=<?=$trafico['id']?>">ver</a> &nbsp;
+                            <a href="?option=edit&id=<?=$trafico['id']?>">editar</a> &nbsp;
+                            <a href="?option=delete&id=<?=$trafico['id']?>">borrar</a> &nbsp;
+                        </td>
+                    </tr>
+            <?php } ?>
+            </tbody>
+        </table>
+    </main>
 </body>
 </html>

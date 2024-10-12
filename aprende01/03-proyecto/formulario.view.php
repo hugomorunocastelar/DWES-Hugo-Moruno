@@ -9,36 +9,37 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-<form action="?option=store" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="id" value="<?= $data['id'] ?>">
-    <div class="container-form">
-        <div class="items-form">
-            <label for="matricula">Matrícula</label>
-            <div class="items-form-input">
-                <input id="matricula" type="text" name="data[matricula]" value="<?= $data['matricula'] ?>" placeholder="Matrícula" <?= $data['readonly'] ?? '' ?>>
+    <form action="?option=store" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="<?= $data['id'] ?>">
+        <h1>Formulario de Tráfico</h1>
+        <div class="container-form">
+            <div class="items-form">
+                <label for="matricula">Matrícula</label>
+                <input id="matricula" type="text" name="data[matricula]" value="<?= $data['matricula'] ?? '' ?> " placeholder="Matrícula" <?= $data['readonly'] ?? '' ?>>
+            </div>
+            <div class="items-form">
+                <label for="modelo">Modelo:</label>
+                <input id="modelo" type="text" name="data[modelo]" value="<?= $data['modelo'] ?? '' ?>" placeholder="Modelo" <?= $data['readonly'] ?? '' ?>>
+            </div>
+            <div class="items-form">
+                <label for="fechaInscrip">Fecha de inscripción:</label>
+                <input id="fechaInscrip" type="date" name="data[fecha_inscrip]" value="<?= $data['fecha_inscrip'] ?? '' ?>" <?= $data['readonly'] ?? '' ?>>
+            </div>
+            <div class="items-form">
+                <label for="nombre">Imagen:</label>
+                <?php if (!isset($data['readonly'])) { ?>
+                    <input type="file" id="imagen" name="data[imagen]" >
+                <?php } ?>
+                <?php if ($data['imagen'] ?? null != null) { ?>
+                    <img src="<?=$data['imagen']?>">
+                <?php } ?>
+            </div>
+            <div>
+                <?php if (!isset($data['readonly'])) { ?>
+                    <input type="submit" value="Guardar">
+                <?php } ?>
             </div>
         </div>
-        <div class="items-form">
-            <label for="modelo">Modelo:</label>
-            <input id="modelo" type="text" name="data[modelo]" value="<?= $data['modelo'] ?>">
-        </div>
-        <div class="items-form">
-            <label for="fechaInscrip">Fecha nacimiento:</label>
-            <input id="fechaInscrip" type="date" name="data[fecha_inscrip]" value="<?= $data['fecha_inscrip'] ?>">
-        </div>
-        <div class="items-form">
-            <label for="nombre">Imagen:</label>
-            <input type="file" id="imagen" name="data[imagen]">
-            <img src="<?=$data['imagen'] ?>" >
-        </div>
-        <div>
-            <?php if (!isset($data['readonly'])) { ?>
-                <input type="submit" value="Guardar" <?= $data['readonly'] ?? '' ?>>
-            <?php } ?>
-        </div>
-    </div>
-</form>
-
-
+    </form>
 </body>
 </html>

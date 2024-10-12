@@ -5,6 +5,7 @@
     class TraficoController
     {
         public $traficoDao;
+        public $data;
         public $option;
 
         public function __construct()
@@ -31,22 +32,47 @@
 
         public function crear() {
             $data = $this->initForm();
-            if (isset($_FILES['imagen'])) {
-                $imagen = $_FILES['imagen'] ?? '';
-                $localPathImagen = $imagen['name'];
-            } else {
-                $localPathImagen = null;
-            }
             require "formulario.view.php";
         }
 
-        private function initForm():array {
-            $data['id'] = '';
-            $data['matricula'] = '';
-            $data['modelo'] = '';
-            $data['fecha_inscrip'] = '';
-            $data['imagen'] = null;
-            $data['localPathImagen'] = '';
-            return $data;
+        public function store() {
+            $data = $_POST['data'];
+
+            $this->traficoDao->save($data);
+
+            $this->index();
         }
+
+        public function show() {
+            $id = $_GET['id'] ?? null;
+
+            $data = $this->traficoDao->findById($id);
+            $data = $data[0];
+            $data['readonly'] = 'readonly';
+            require "formulario.view.php";
+        }
+
+        public function edit() {
+            $id = $_GET['id'] ?? null;
+            $data = $this->traficoDao->findById($id);
+            $data = $data[0];
+            require "formulario.view.php";
+        }
+
+        private function delete()
+        {
+            $id = $_GET['id'] ?? null;
+            $this->traficoDao->delete($id);
+            $this->index();
+        }
+
+        private function initForm():array {
+        $data['id'] = '';
+        $data['matricula'] = '';
+        $data['modelo'] = '';
+        $data['fecha_inscrip'] = '';
+        $data['imagen'] = null;
+        $data['localPathImagen'] = null;
+        return $data;
+    }
     }
