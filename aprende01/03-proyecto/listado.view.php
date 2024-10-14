@@ -10,7 +10,7 @@
 </head>
 <body>
     <main>
-        <a href="?option=create">Nuevo</a>
+        <a href="?option=create"><p>Nuevo</p></a>
         <table>
             <thead>
             <th>Matrícula</th>

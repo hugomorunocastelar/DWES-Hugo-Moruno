@@ -13,15 +13,22 @@
 
         public function save($data): int|null
         {
-            $sentencia = $this->bd->prepare(
-                'INSERT INTO trafico(
+            if(isset($data['id']))
+            {
+                return $this->update($data['id'], $data);
+            }
+            else
+            {
+                $sentencia = $this->bd->prepare(
+                    'INSERT INTO trafico(
                             matricula, modelo, fecha_inscrip, imagen)
                        VALUES (:matricula, :modelo, :fecha_inscrip, :imagen)');
-            $sentencia->bindValue(':matricula', $data['matricula'] ?? "", type: SQLITE3_TEXT);
-            $sentencia->bindValue(':modelo', $data['modelo'] ?? "", type: SQLITE3_TEXT);
-            $sentencia->bindValue(':fecha_inscrip', $data['fecha_inscrip'] ?? "", type: SQLITE3_TEXT);
-            $sentencia->bindValue(':imagen', $data['imagen'], type: SQLITE3_TEXT);
-            return $sentencia->execute() ? 1 : 0;
+                $sentencia->bindValue(':matricula', $data['matricula'] ?? "", type: SQLITE3_TEXT);
+                $sentencia->bindValue(':modelo', $data['modelo'] ?? "", type: SQLITE3_TEXT);
+                $sentencia->bindValue(':fecha_inscrip', $data['fecha_inscrip'] ?? "", type: SQLITE3_TEXT);
+                $sentencia->bindValue(':imagen', $data['imagen'], type: SQLITE3_TEXT);
+                return $sentencia->execute() ? 1 : 0;
+            }
         }
 
         public function findById(int $id): array
@@ -36,8 +43,16 @@
 
         public function update(int $id, array $data): bool
         {
-            // TODO: Implement update() method.
-            return true;
+            $sentencia = $this->bd->prepare(
+                'UPDATE trafico
+                SET matricula = :matricula, modelo= :modelo, fecha_inscrip = :fecha_inscrip, imagen = :imagen
+                WHERE id = :id;');
+            $sentencia->bindValue(':matricula', $data['matricula'] ?? "", type: SQLITE3_TEXT);
+            $sentencia->bindValue(':modelo', $data['modelo'] ?? "", type: SQLITE3_TEXT);
+            $sentencia->bindValue(':fecha_inscrip', $data['fecha_inscrip'] ?? "", type: SQLITE3_TEXT);
+            $sentencia->bindValue(':imagen', $data['imagen'], type: SQLITE3_TEXT);
+            $sentencia->bindValue(':id', $id, type: SQLITE3_TEXT);
+            return $sentencia->execute() ? 1 : 0;
         }
 
         public function findAll(): array|null

@@ -11,11 +11,14 @@
 <body>
     <form action="?option=store" method="post" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<?= $data['id'] ?>">
-        <h1>Formulario de Tráfico</h1>
+        <header id="cabecero">
+            <h1>Formulario de Tráfico</h1>
+            <a href="/"><p>Volver</p></a>
+        </header>
         <div class="container-form">
             <div class="items-form">
                 <label for="matricula">Matrícula</label>
-                <input id="matricula" type="text" name="matricula" value="<?= $data['matricula'] ?? '' ?> " placeholder="Matrícula" <?= $data['readonly'] ?? '' ?>>
+                <input id="matricula" type="text" name="matricula" value="<?= $data['matricula'] ?? '' ?>" placeholder="Matrícula" <?= $data['readonly'] ?? '' ?>>
             </div>
             <div class="items-form">
                 <label for="modelo">Modelo:</label>
@@ -27,9 +30,13 @@
             </div>
             <div class="items-form">
                 <label for="imagen">Imagen: </label>
-                <input id="imagen" type="file" name="imagen">
+                <?php if (!isset($data['imagen'])) { ?>
+                    <input id="imagen" type="file" name="imagen">
+                <?php } ?>
+
+
                 <?php if (isset($data['localPathImagen'])) { ?>
-                    <img src="<?=$data['localPathImagen']?>">
+                    <img style="width: 100px" src="<?=$data['localPathImagen']?>">
                 <?php } ?>
             </div>
             <div>

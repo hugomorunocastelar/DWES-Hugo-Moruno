@@ -7,7 +7,6 @@
         public $traficoDao;
         public $data;
         public $option;
-
         public function __construct()
         {
             $this->traficoDao = new TraficoDao();
@@ -32,22 +31,21 @@
 
         public function crear() {
             $data = $this->initForm();
-            if (isset($_FILES['imagen'])) {
-                $imagen = $_FILES['imagen'] ?? '';
-                $localPathImagen = $imagen['name'];
-            } else {
-                $localPathImagen = null;
-            }
             require "formulario.view.php";
         }
 
         public function store() {
             $data = $_POST;
-            $data['imagen'] = $_FILES['imagen']['name'];
-            move_uploaded_file($_FILES['imagen']['name'], "./img/" . $data['imagen']);
+            if (isset($_FILES['imagen'])) {
+                $imagen = $_FILES['imagen'];
+                $localPathImagen = './img/imgProg/' . $imagen['name'];
+                move_uploaded_file($imagen["tmp_name"], $localPathImagen);
+                $data['imagen'] = $imagen['name'];
+            } else {
+                $data['imagen'] = null;
+            }
 
             $this->traficoDao->save($data);
-
             $this->index();
         }
 
@@ -56,8 +54,9 @@
 
             $data = $this->traficoDao->findById($id);
             $data = $data[0];
+            $localPathImagen = './img/imgProg/';
             if ($data['imagen']!=null) {
-                $data['localPathImagen'] = $data['imagen'];
+                $data['localPathImagen'] = $localPathImagen.$data['imagen'];
             } else {
                 $data['localPathImagen'] = null;
             }
@@ -66,7 +65,7 @@
         }
 
         public function edit() {
-            $id = $_GET['id'] ?? null;
+            $id = $_GET['id'];
             $data = $this->traficoDao->findById($id);
             $data = $data[0];
             require "formulario.view.php";

@@ -42,7 +42,7 @@
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:E:\DWES-Hugo-Moruno\aprende01\03-proyecto\dbprueba.db</jdbc-url>
+      <jdbc-url>jdbc:sqlite:C:\Users\hugom\Documents\DWES-Hugo-Moruno\aprende01\03-proyecto\dbprueba.db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
       <libraries>
         <library>

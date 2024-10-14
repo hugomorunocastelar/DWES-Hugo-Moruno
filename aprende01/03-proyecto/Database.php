@@ -24,6 +24,8 @@ class Database
             );
             return self::$bd;
 
+            //Dejo ésto aquí comentado porque no he conseguido crear el contenedor de docker_lamp.
+
             /*try {
                 $url = "mysql:host=" . self::$host . ";port=" . self::$port . ";dbname=" . self::$dbname . ";charset=utf8";
                 self::$bd = new PDO($url, self::$username, self::$password);
