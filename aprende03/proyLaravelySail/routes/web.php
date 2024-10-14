@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ArticulosAdminController;
 use App\Http\Controllers\ArticulosController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
@@ -13,9 +14,11 @@ use Illuminate\Support\Facades\Route;
 //Route::put('/articulos/update/{id}', [ArticulosController::class, 'update']);
 //Route::delete('/articulos/destroy/{id}', [ArticulosController::class, 'destroy']);
 //Route::get('/articulos/show/{id}', [ArticulosController::class, 'show']);
+//Route::resource('/articulos', ArticulosController::class);
 
-Route::resource('/articulos', ArticulosController::class);
 Route::get('/home', HomeController::class);
+Route::get('/articulos', [ArticulosController::class, 'index'])->name('articulos.index');
+Route::resource('admin/articulos', ArticulosAdminController::class)->names('admin.articulos');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
