@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Articulo;
 use Illuminate\Http\Request;
 
 class ArticulosAdminController extends Controller
@@ -12,7 +13,9 @@ class ArticulosAdminController extends Controller
      */
     public function index()
     {
-        //
+        $articulos = Articulo::all();
+        return view('admin.articulos.index')
+            ->with('articulos', $articulos);
     }
 
     /**

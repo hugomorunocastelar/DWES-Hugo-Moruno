@@ -19,7 +19,7 @@ class ArticuloFactory extends Factory
         return [
 
             'ref' => fake()->regexify('[A-Z]{3}-[0-9]{3}'),
-            'descripción' => fake()->sentence(5),
+            'descripcion' => fake()->sentence(5),
             'precio' => fake()->randomFloat(2,0,500),
             'observaciones' => fake()->paragraph,
 
