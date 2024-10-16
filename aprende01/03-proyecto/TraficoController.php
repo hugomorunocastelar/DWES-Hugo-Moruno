@@ -24,7 +24,6 @@
         }
 
         public function index() {
-
             $data['trafico'] = $this->traficoDao->findAll();
             require "listado.view.php";
         }
