@@ -23,7 +23,9 @@ class ArticulosAdminController extends Controller
      */
     public function create()
     {
-        //
+        $articulos = Articulo::all();
+        return view('admin.articulos.create')
+            ->with('articulos', $articulos);
     }
 
     /**
@@ -31,7 +33,15 @@ class ArticulosAdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try
+        {
+            Articulo::create($request->all());
+        }
+        catch (Exception $exception)
+        {
+
+        }
+        return redirect()->route('admin.articulos.index');
     }
 
     /**

@@ -13,7 +13,7 @@
 
         public function save($data): int|null
         {
-            if(isset($data['id']))
+            if(isset($data['id']) && $data['id'] != '')
             {
                 return $this->update($data['id'], $data);
             }

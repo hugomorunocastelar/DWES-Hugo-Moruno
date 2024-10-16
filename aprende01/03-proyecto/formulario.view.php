@@ -10,7 +10,7 @@
 </head>
 <body>
     <form action="?option=store" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="id" value="<?= $data['id'] ?>">
+        <input type="hidden" name="id" value="<?= $data['id'] ?? null ?>">
         <header id="cabecero">
             <h1>Formulario de Tráfico</h1>
             <a href="/"><p>Volver</p></a>

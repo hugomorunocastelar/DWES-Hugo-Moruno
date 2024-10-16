@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class);
 Route::get('/articulos', [ArticulosController::class, 'index'])->name('articulos.index');
-Route::resource('admin/articulos', ArticulosAdminController::class)->names('admin.articulos');
+Route::resource('/admin/articulos', ArticulosAdminController::class)->names('admin.articulos');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
