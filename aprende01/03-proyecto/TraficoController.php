@@ -67,6 +67,12 @@
             $id = $_GET['id'];
             $data = $this->traficoDao->findById($id);
             $data = $data[0];
+            $localPathImagen = './img/imgProg/';
+            if ($data['imagen']!=null) {
+                $data['localPathImagen'] = $localPathImagen.$data['imagen'];
+            } else {
+                $data['localPathImagen'] = null;
+            }
             require "formulario.view.php";
         }
 

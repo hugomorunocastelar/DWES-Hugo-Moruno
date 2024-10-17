@@ -30,11 +30,7 @@
             </div>
             <div class="items-form">
                 <label for="imagen">Imagen: </label>
-                <?php if (!isset($data['imagen'])) { ?>
-                    <input id="imagen" type="file" name="imagen">
-                <?php } ?>
-
-
+                <input id="imagen" type="file" name="imagen"">
                 <?php if (isset($data['localPathImagen'])) { ?>
                     <img style="width: 100px" src="<?=$data['localPathImagen']?>">
                 <?php } ?>

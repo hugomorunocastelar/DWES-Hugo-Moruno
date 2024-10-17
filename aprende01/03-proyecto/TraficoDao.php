@@ -45,15 +45,24 @@
         {
             $sentencia = $this->bd->prepare(
                 'UPDATE trafico
-                SET matricula = :matricula, modelo= :modelo, fecha_inscrip = :fecha_inscrip, imagen = :imagen
-                WHERE id = :id;');
-            $sentencia->bindValue(':matricula', $data['matricula'] ?? "", type: SQLITE3_TEXT);
-            $sentencia->bindValue(':modelo', $data['modelo'] ?? "", type: SQLITE3_TEXT);
-            $sentencia->bindValue(':fecha_inscrip', $data['fecha_inscrip'] ?? "", type: SQLITE3_TEXT);
-            $sentencia->bindValue(':imagen', $data['imagen'], type: SQLITE3_TEXT);
-            $sentencia->bindValue(':id', $id, type: SQLITE3_TEXT);
+                SET matricula = :matricula, modelo = :modelo, fecha_inscrip = :fecha_inscrip' .
+                ($data['imagen'] != '' ? ', imagen = :imagen' : '') . ' 
+                WHERE id = :id;'
+            );
+
+            $sentencia->bindValue(':matricula', $data['matricula'] ?? "", SQLITE3_TEXT);
+            $sentencia->bindValue(':modelo', $data['modelo'] ?? "", SQLITE3_TEXT);
+            $sentencia->bindValue(':fecha_inscrip', $data['fecha_inscrip'] ?? "", SQLITE3_TEXT);
+
+            if ($data['imagen'] != '') {
+                $sentencia->bindValue(':imagen', $data['imagen'], SQLITE3_TEXT);
+            }
+
+            $sentencia->bindValue(':id', $id, SQLITE3_INTEGER);
+
             return $sentencia->execute() ? 1 : 0;
         }
+
 
         public function findAll(): array|null
         {
