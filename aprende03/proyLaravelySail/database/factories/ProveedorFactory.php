@@ -16,11 +16,15 @@ class ProveedorFactory extends Factory
      */
     public function definition(): array
     {
+        $persona = fake()->boolean;
         return [
-            'nif' => fake()->regexify('[XYZ]{1}[0-9]{7}-[A-Z]{1}'),
-            'nombreApellidos' => fake()->sentence(2),
-            'razonSocial' => fake()->sentence(8),
-            'comentario' => fake()->paragraph,
+            'nif' => $persona ?
+                fake()->regexify('[0-9]{8}-[A-Z]{1}')
+                :
+                fake()->regexify('[A-Z0-9]{1}[0-9]{7}-[A-Z]{1}'),
+            'nombreApellidos' => $persona ? fake()->Name():null,
+            'razonSocial' => $persona ? null : fake()->company(),
+            'comentario' => fake()->optional()->text(),
         ];
     }
 }

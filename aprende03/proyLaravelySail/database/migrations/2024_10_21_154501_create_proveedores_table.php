@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('proveedores', function (Blueprint $table) {
             $table->id();
             $table->string('nif',15)->unique();
-            $table->string('nombreApellidos', 50);
+            $table->string('nombreApellidos', 50)->nullable();
             $table->string('razonSocial', 200)->nullable();
             $table->text('comentario')->nullable();
             $table->timestamps();
