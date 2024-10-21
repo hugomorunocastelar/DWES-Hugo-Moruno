@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\Admin\ArticulosAdminController;
+use App\Http\Controllers\Admin\ProveedoresAdminController;
 use App\Http\Controllers\ArticulosController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProveedoresController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -19,6 +21,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', HomeController::class);
 Route::get('/articulos', [ArticulosController::class, 'index'])->name('articulos.index');
 Route::resource('/admin/articulos', ArticulosAdminController::class)->names('admin.articulos');
+Route::get('/proveedores', [ProveedoresController::class, 'index'])->name('proveedores.index');
+Route::resource('/admin/proveedores', ProveedoresAdminController::class)->names('admin.proveedores');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

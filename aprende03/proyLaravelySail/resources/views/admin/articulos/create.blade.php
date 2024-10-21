@@ -8,9 +8,9 @@
         <table>
             <thead>
                 <tr>
-                    <td>Referencia</td>
-                    <td>Descripción</td>
-                    <td>Precio</td>
+                    <td class="w-fit">Referencia</td>
+                    <td class="w-full">Descripción</td>
+                    <td class="w-fit">Precio</td>
                 </tr>
             </thead>
             <tbody>
