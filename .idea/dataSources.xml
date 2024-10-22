@@ -68,11 +68,11 @@
         </library>
       </libraries>
     </data-source>
-    <data-source source="LOCAL" name="laravel@localhost" uuid="c5420eb4-34e0-41f5-bd76-089e3c223097">
+    <data-source source="LOCAL" name="@localhost" uuid="c5420eb4-34e0-41f5-bd76-089e3c223097">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/laravel</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

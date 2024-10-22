@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Proveedor;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -22,7 +23,7 @@ class ArticuloFactory extends Factory
             'descripcion' => fake()->sentence(5),
             'precio' => fake()->randomFloat(2,0,500),
             'observaciones' => fake()->paragraph,
-
+            'proveedor_id' => Proveedor::inRandomOrder()->first()->id,
         ];
     }
 }

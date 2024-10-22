@@ -18,7 +18,7 @@
                 <tr>
                     <td>{{ $proveedor -> nif }}</td>
                     <td>{{ $proveedor -> razonSocial }}</td>
-                    <td>{{ $proveedor -> nombreApellidos }}</td>
+                    <td>{{ $proveedor -> nombre }}{{ $proveedor -> apellido1 }}</td>
                 </tr>
             @endforeach
             </tbody>

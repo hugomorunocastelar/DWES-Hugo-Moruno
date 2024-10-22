@@ -22,8 +22,7 @@ class DatabaseSeeder extends Seeder
             'password' => 'hugo'
         ]);
 
-        Articulo::factory(10)->create();
         Proveedor::factory(10)->create();
-
+        Articulo::factory(10)->create();
     }
 }

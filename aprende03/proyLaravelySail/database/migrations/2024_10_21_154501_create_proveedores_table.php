@@ -14,8 +14,12 @@ return new class extends Migration
         Schema::create('proveedores', function (Blueprint $table) {
             $table->id();
             $table->string('nif',15)->unique();
-            $table->string('nombreApellidos', 50)->nullable();
+            $table->string('nombre', 50)->nullable();
+            $table->string('apellido1', 50)->nullable();
+            $table->string('apellido2', 50)->nullable();
             $table->string('razonSocial', 200)->nullable();
+            $table->string('denominacion', 100)->nullable();
+            $table->boolean('autonomo');
             $table->text('comentario')->nullable();
             $table->timestamps();
         });

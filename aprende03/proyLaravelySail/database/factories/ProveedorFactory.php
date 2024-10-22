@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Proveedor;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -22,9 +23,14 @@ class ProveedorFactory extends Factory
                 fake()->regexify('[0-9]{8}-[A-Z]{1}')
                 :
                 fake()->regexify('[A-Z0-9]{1}[0-9]{7}-[A-Z]{1}'),
-            'nombreApellidos' => $persona ? fake()->Name():null,
+            'nombre' => $persona ? fake()->firstName():null,
+            'apellido1' => $persona ? fake()->lastName():null,
+            'apellido2' => $persona ? fake()->lastName():null,
             'razonSocial' => $persona ? null : fake()->company(),
+            'denominacion' => fake()->company(),
+            'autonomo' => fake()->boolean(),
             'comentario' => fake()->optional()->text(),
+
         ];
     }
 }

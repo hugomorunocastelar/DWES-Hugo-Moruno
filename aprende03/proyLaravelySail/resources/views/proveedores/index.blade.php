@@ -6,7 +6,11 @@
         PROVEEDORES:
         <ul>
             @foreach($proveedores as $proveedor)
-                <p> {{ $proveedor -> nif }} - {{ $proveedor -> nombreApellidos }} <br> {{ $proveedor -> razonSocial }}</p>
+                <p> {{ $proveedor -> nif }} --
+                    {{ $proveedor -> nombre }}
+                    {{ $proveedor -> apellido1 }}
+                    {{ $proveedor -> apeliido2 }}
+                    {{ $proveedor -> razonSocial }}</p>
             @endforeach
         </ul>
     </div>
