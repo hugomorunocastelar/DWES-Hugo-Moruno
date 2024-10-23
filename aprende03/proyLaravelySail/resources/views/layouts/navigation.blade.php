@@ -89,6 +89,11 @@
                 {{ __('Artículos') }}
             </x-responsive-nav-link>
         </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('admin.proveedores.index')" :active="request()->routeIs('admin.proveedores.index')">
+                {{ __('Proveedores') }}
+            </x-responsive-nav-link>
+        </div>
 
         @if(Auth::user())
         <!-- Responsive Settings Options -->

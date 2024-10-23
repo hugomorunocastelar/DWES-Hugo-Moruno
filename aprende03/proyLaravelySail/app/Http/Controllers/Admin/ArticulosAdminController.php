@@ -37,9 +37,9 @@ class ArticulosAdminController extends Controller
         {
             Articulo::create($request->all());
         }
-        catch (Exception $exception)
+        catch (Exception $e)
         {
-
+            Log::error($e);
         }
         return redirect()->route('admin.articulos.index');
     }

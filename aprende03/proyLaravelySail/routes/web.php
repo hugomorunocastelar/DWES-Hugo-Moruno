@@ -20,9 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class);
 Route::get('/articulos', [ArticulosController::class, 'index'])->name('articulos.index');
-Route::resource('/admin/articulos', ArticulosAdminController::class)->names('admin.articulos');
 Route::get('/proveedores', [ProveedoresController::class, 'index'])->name('proveedores.index');
-Route::resource('/admin/proveedores', ProveedoresAdminController::class)->names('admin.proveedores');
 
 
 Route::get('/dashboard', function () {
@@ -33,6 +31,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::resource('/admin/articulos', ArticulosAdminController::class)->names('admin.articulos');
+    Route::resource('/admin/proveedores', ProveedoresAdminController::class)->names('admin.proveedores');
 });
 
 require __DIR__.'/auth.php';
